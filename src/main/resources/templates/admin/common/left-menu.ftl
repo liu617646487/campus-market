@@ -1,0 +1,30 @@
+<nav class="sidebar-main">
+    <ul class="nav nav-drawer">
+        <li class="nav-item active"> <a href="/admin/system/index"><i class="mdi mdi-home"></i> 后台首页</a> </li>
+        <#if userTopMenus??>
+            <#list userTopMenus as userTopMenu>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi ${userTopMenu.icon}"></i> ${userTopMenu.name}</a>
+                    <ul class="nav nav-subnav">
+                        <#if userSecondMenus??>
+                            <#list userSecondMenus as userSecondMenu>
+                                <#if userSecondMenu.parent.id==userTopMenu.id>
+                                    <li class="selected-menu"><a href="${userSecondMenu.url}"><i class="mdi ${userSecondMenu.icon}"></i> ${userSecondMenu.name}</a> </li>
+                                </#if>
+                            </#list>
+                        </#if>
+                    </ul>
+                </li>
+            </#list>
+        </#if>
+
+        <#--<li class="nav-item nav-item-has-subnav active open">
+            <a href="javascript:void(0)"><i class="mdi mdi-palette"></i>系统设置</a>
+            <ul class="nav nav-subnav">
+                <li> <a href="/admin/menu/list">菜单管理</a> </li>
+                <li> <a href="/admin/role/list">角色管理</a> </li>
+                <li class="active"> <a href="/admin/user/list">用户管理</a> </li>
+            </ul>
+        </li>-->
+    </ul>
+</nav>
